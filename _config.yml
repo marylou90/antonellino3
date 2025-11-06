@@ -99,7 +99,7 @@ description: "Alembic is a starting point for Jekyll projects. Rather than start
 url: "https://marylou90.github.io/" # Site url, also used in jekyll-seo-tag
 baseurl: "/antonellino3"
 repo: "https://github.com/marylou90/antonellino3"
-decap_repo: "marylou90/antonellino3"
+decap_repo: marylou90/antonellino3
 email: "m.baldini@outlook.it"
 # disqus: "alembic-1" # Blog post comments, uncomment the option and set the site ID from your Disqus account
 # date_format: "%-d %B %Y" # Blog post date formatting using placeholder formatting
