@@ -1,0 +1,30 @@
+name: Deploy Jekyll to GitHub Pages
+
+on:
+  push:
+    branches: ["main"] # Triggera il workflow a ogni push sul branch 'main'
+
+jobs:
+  jekyll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.x' # Scegli una versione recente e compatibile (es. '3.2')
+          bundler-cache: true # Installa le gemme con bundle install
+
+      - name: Build Jekyll Site
+        run: bundle exec jekyll build
+
+      - name: Upload Artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site # Carica la cartella compilata da Jekyll
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
