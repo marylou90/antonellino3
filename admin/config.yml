@@ -1,0 +1,37 @@
+# CONFIGURAZIONE DEL BACKEND
+# Il backend 'github' permette a Decap CMS di comunicare con il repository.
+backend:
+  name: github
+  repo: {{ site.decap_repo }} # Prende la variabile dal _config.yml
+  branch: main                # Sostituisci con 'master' se il tuo branch principale è master
+
+# CONFIGURAZIONE DEI MEDIA
+media_folder: "assets/uploads" 
+public_folder: "/assets/uploads" 
+
+# COLLEZIONI (I tipi di contenuto che il blogger gestirà)
+collections:
+  
+  - name: "posts"
+    label: "Articoli del Blog"
+    folder: "_posts"
+    create: true 
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Titolo", name: "title", widget: "string", required: true}
+      - {label: "Data di Pubblicazione", name: "date", widget: "datetime", default: "now", required: true}
+      - {label: "Autore (Opzionale)", name: "author", widget: "string", required: false}
+
+      # Il Widget 'select' per le tue 3 Categorie Cablate
+      - label: "Categoria"
+        name: "category"
+        widget: "select"
+        required: true
+        options:
+          - {label: "Categoria A", value: "Categoria A"}
+          - {label: "Categoria B", value: "Categoria B"}
+          - {label: "Categoria C", value: "Categoria C"}
+
+      - {label: "Corpo dell'Articolo", name: "body", widget: "markdown"}
